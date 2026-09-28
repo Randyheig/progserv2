@@ -1,3 +1,32 @@
+# Concept du site
+
+## Membre du groupe :
+
+- Randy Mahfoud
+- Louis Peruzzi
+
+## Fonctionnalités principales de l'application.
+
+### Pages
+
+- 1.Page d'accueil (public)
+- 2.Page avec map et liste des skatepark (public)
+- 3.Page pour chaque skatepark (public)
+- 4.Page du compte/profil (déconnection)(privé)
+- 5.Page des skateparks likés (privé)
+- 6.Page avec la liste des skateparks ajoutés (privé)
+- 7.Page pour ajouter un skatepark (privé)
+- 8.?
+
+### Fonctionnalités
+
+- Francais et anglais
+- Création de compte
+- Rôle admin et utilisateur
+- question sur le point 11
+- Stockage de mdp
+
+
 # HEIG-VD ProgServ2 Course PHP Template
 
 Ce modèle de projet est conçu pour les étudiant.es du cours
