@@ -26,6 +26,9 @@
 - question sur le point 11
 - Stockage de mdp
 
+## Maquette 
+- https://www.figma.com/design/UOPrGiwj2R67KdeuJkf9fZ/Site-de-skate?node-id=0-1&t=fy3b0EjjVLYUzlwb-1
+
 
 # HEIG-VD ProgServ2 Course PHP Template
 
