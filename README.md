@@ -7,6 +7,9 @@
 
 # Cahier des charges / Site des skateparks vaudois
 
+## Maquette 
+- https://www.figma.com/design/UOPrGiwj2R67KdeuJkf9fZ/Site-de-skate?node-id=0-1&t=fy3b0EjjVLYUzlwb-1
+
 ## 1. Contexte et objectifs
 
 Le site est une application web qui répertorie les skateparks du canton de Vaud, les affiche sur une carte et permet à la communauté d'en ajouter de nouveaux, validés par un administrateur avant publication.
@@ -102,10 +105,6 @@ Section affichée en plus sur la page profil, réservée aux admins : titre « A
 - **Performance** : images compressées.
 - **Accessibilité et SEO** : textes alternatifs, contrastes suffisants, URL et titre propres par skatepark.
 - **Compatibilité** : navigateurs récents, sur ordinateur et mobile.
-
-
-## Maquette 
-- https://www.figma.com/design/UOPrGiwj2R67KdeuJkf9fZ/Site-de-skate?node-id=0-1&t=fy3b0EjjVLYUzlwb-1
 
 
 # HEIG-VD ProgServ2 Course PHP Template
