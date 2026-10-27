@@ -7,73 +7,102 @@
 
 # Cahier des charges / Site des skateparks vaudois
 
-## Maquette 
+## Maquette
+
 - https://www.figma.com/design/UOPrGiwj2R67KdeuJkf9fZ/Site-de-skate?node-id=0-1&t=fy3b0EjjVLYUzlwb-1
 
 ## 1. Contexte et objectifs
 
-Le site est une application web qui répertorie les skateparks du canton de Vaud, les affiche sur une carte et permet à la communauté d'en ajouter de nouveaux, validés par un administrateur avant publication.
+Le site est une application web qui répertorie les skateparks du canton de Vaud,
+les affiche sur une carte et permet à la communauté d'en ajouter de nouveaux,
+validés par un administrateur avant publication.
 
 Objectifs :
 
-- Centraliser des infos fiables par skatepark : adresse, taille, modules, photos, compte Instagram.
-- Trouver vite un skatepark proche grâce à la géolocalisation, à la carte et aux filtres.
+- Centraliser des infos fiables par skatepark : adresse, taille, modules,
+  photos, compte Instagram.
+- Trouver vite un skatepark proche grâce à la géolocalisation, à la carte et aux
+  filtres.
 - Faire vivre la base par les utilisateurs, avec une modération par un admin.
 - Voir quels parks sont appréciés grâce aux likes.
 - Proposer le site en français et en anglais.
 
 ## 2. Utilisateurs et rôles
 
-Trois profils, chacun avec des droits cumulatifs : un visiteur consulte, un utilisateur connecté contribue, un admin modère.
+Trois profils, chacun avec des droits cumulatifs : un visiteur consulte, un
+utilisateur connecté contribue, un admin modère.
 
-| Rôle | Pages accessibles | Actions possibles |
-| --- | --- | --- |
-| Visiteur (non connecté) | 1, 2, 3, 4 | Consulter les skateparks, rechercher, filtrer, créer un compte, se connecter |
-| Utilisateur connecté | 1 à 8 | Tout ce que fait le visiteur, plus liker un park, gérer son profil, ajouter un skatepark, suivre le statut de ses ajouts |
-| Admin | 1 à 8, plus la section admin du profil | Tout ce que fait l'utilisateur, plus valider ou refuser les skateparks proposés |
+| Rôle                    | Pages accessibles                      | Actions possibles                                                                                                        |
+| ----------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Visiteur (non connecté) | 1, 2, 3, 4                             | Consulter les skateparks, rechercher, filtrer, créer un compte, se connecter                                             |
+| Utilisateur connecté    | 1 à 8                                  | Tout ce que fait le visiteur, plus liker un park, gérer son profil, ajouter un skatepark, suivre le statut de ses ajouts |
+| Admin                   | 1 à 8, plus la section admin du profil | Tout ce que fait l'utilisateur, plus valider ou refuser les skateparks proposés                                          |
 
-Un accès à une page privée sans être connecté redirige vers la connexion. La section admin du profil n'est visible et accessible que pour les admins.
+Un accès à une page privée sans être connecté redirige vers la connexion. La
+section admin du profil n'est visible et accessible que pour les admins.
 
 ## 3. Fonctionnalités générales
 
-- **Bilingue FR / EN** : sélecteur FR | EN dans le footer, tous les textes de l'interface traduits.
-- **Comptes** : création de compte (page 4, avec le lien « Déjà un compte ? Se connecter »), connexion, déconnexion (bouton en bas de la page profil).
+- **Bilingue FR / EN** : sélecteur FR | EN dans le footer, tous les textes de
+  l'interface traduits.
+- **Comptes** : création de compte (page 4, avec le lien « Déjà un compte ? Se
+  connecter »), connexion, déconnexion (bouton en bas de la page profil).
 - **Rôles** : utilisateur et admin, contrôlés côté serveur.
-- **Géolocalisation** : sur l'accueil, les 5 skateparks les plus proches de la position de l'utilisateur s'affichent avant toute saisie dans la recherche.
-- **Recherche** : barre de recherche avec bouton sur l'accueil et sur la page carte. La page carte a un bouton « Filtres » qui filtre selon les caractéristiques des parks (taille, modules, etc.).
-- **Carte interactive** : les skateparks sont placés sur une carte, un clic mène à la fiche.
-- **Likes et favoris** : un like par utilisateur et par park, il sert de favori. Le compteur de likes (par exemple 463) s'affiche sur les cartes et sur la fiche.
-- **Ajout avec validation** : un park ajouté est « En attente » jusqu'à la décision d'un admin, puis « Validée » (ou refusée). Le statut est visible page 7.
-- **Pages légales** : le footer renvoie vers les mentions légales et la politique de confidentialité, et vers les conditions générales.
+- **Géolocalisation** : sur l'accueil, les 5 skateparks les plus proches de la
+  position de l'utilisateur s'affichent avant toute saisie dans la recherche.
+- **Recherche** : barre de recherche avec bouton sur l'accueil et sur la page
+  carte. La page carte a un bouton « Filtres » qui filtre selon les
+  caractéristiques des parks (taille, modules, etc.).
+- **Carte interactive** : les skateparks sont placés sur une carte, un clic mène
+  à la fiche.
+- **Likes et favoris** : un like par utilisateur et par park, il sert de favori.
+  Le compteur de likes (par exemple 463) s'affiche sur les cartes et sur la
+  fiche.
+- **Ajout avec validation** : un park ajouté est « En attente » jusqu'à la
+  décision d'un admin, puis « Validée » (ou refusée). Le statut est visible
+  page 7.
+- **Pages légales** : le footer renvoie vers les mentions légales et la
+  politique de confidentialité, et vers les conditions générales.
 - **Sécurité des mots de passe** : jamais stockés en clair.
 
 ## 4. Description des pages
 
 ### Éléments communs
 
-- **Header** : menu déroulant à gauche (Map, Favoris, Ajouter un skatepark, Profil), logo au centre, icône de connexion à droite (photo de profil une fois connecté) qui mène à la connexion ou au profil.
-- **Footer** : sélecteur FR | EN, liens vers les mentions légales et la politique de confidentialité, liens vers les conditions générales, logo.
-- **Cartes de skatepark** (accueil, page 2, section admin) : photo, nom, adresse et compteur de likes.
+- **Header** : menu déroulant à gauche (Map, Favoris, Ajouter un skatepark,
+  Profil), logo au centre, icône de connexion à droite (photo de profil une fois
+  connecté) qui mène à la connexion ou au profil.
+- **Footer** : sélecteur FR | EN, liens vers les mentions légales et la
+  politique de confidentialité, liens vers les conditions générales, logo.
+- **Cartes de skatepark** (accueil, page 2, section admin) : photo, nom, adresse
+  et compteur de likes.
 
 ### 1. Accueil (public)
 
-Image d'accueil, barre de recherche avec bouton, puis liste des 5 skateparks les plus proches de l'utilisateur (visible avant toute saisie).
+Image d'accueil, barre de recherche avec bouton, puis liste des 5 skateparks les
+plus proches de l'utilisateur (visible avant toute saisie).
 
 ### 2. Map et liste (public)
 
-Carte interactive, barre de recherche avec bouton « Filtres » (taille, modules, etc.), liste des skateparks sous forme de cartes (photo, nom, adresse, likes).
+Carte interactive, barre de recherche avec bouton « Filtres » (taille, modules,
+etc.), liste des skateparks sous forme de cartes (photo, nom, adresse, likes).
 
 ### 3. Fiche d'un skatepark (public)
 
-Page générée en PHP selon le park choisi. Grande image avec le nom, bouton like et compteur, site web et compte Instagram, bloc Détails (taille S à XL, extérieur ou intérieur, espace repos), bloc Modules (rampe, rails, box, curb, flat) avec photos, adresse et carte.
+Page générée en PHP selon le park choisi. Grande image avec le nom, bouton like
+et compteur, site web et compte Instagram, bloc Détails (taille S à XL,
+extérieur ou intérieur, espace repos), bloc Modules (rampe, rails, box, curb,
+flat) avec photos, adresse et carte.
 
 ### 4. Création de compte (public)
 
-Nom, prénom, mail ou téléphone, NPA, mot de passe, photo de profil (optionnelle), bouton de création, lien « Déjà un compte ? Se connecter ».
+Nom, prénom, mail ou téléphone, NPA, mot de passe, photo de profil
+(optionnelle), bouton de création, lien « Déjà un compte ? Se connecter ».
 
 ### 5. Profil (privé)
 
-Photo, nom, prénom et infos de l'utilisateur, bande « Skateparks favoris », bande « Skateparks ajoutés », bouton « Se déconnecter ».
+Photo, nom, prénom et infos de l'utilisateur, bande « Skateparks favoris »,
+bande « Skateparks ajoutés », bouton « Se déconnecter ».
 
 ### 6. Skateparks likés (privé)
 
@@ -81,31 +110,71 @@ Grille à deux colonnes des parks likés (photo et nom).
 
 ### 7. Skateparks ajoutés (privé)
 
-Bouton « Ajouter un skatepark » et grille des parks ajoutés, chacun avec un badge « En attente » ou « Validée ».
+Bouton « Ajouter un skatepark » et grille des parks ajoutés, chacun avec un
+badge « En attente » ou « Validée ».
 
 ### 8. Ajout d'un skatepark (privé)
 
-Formulaire : nom, site web ou Insta, taille (S, M, L, XL), modules à cocher (rampe, box, flat, quarter, rail, curb, bowl, autre), photos, adresse. Bouton « Envoyer pour validation ».
+Formulaire : nom, site web ou Insta, taille (S, M, L, XL), modules à cocher
+(rampe, box, flat, quarter, rail, curb, bowl, autre), photos, adresse. Bouton «
+Envoyer pour validation ».
 
 ### Section admin du profil (admin)
 
-Section affichée en plus sur la page profil, réservée aux admins : titre « Administration », compteur « À valider (3) », une carte par park en attente avec les boutons Accepter et Refuser.
+Section affichée en plus sur la page profil, réservée aux admins : titre «
+Administration », compteur « À valider (3) », une carte par park en attente avec
+les boutons Accepter et Refuser.
 
 ## 5. Exigences techniques et sécurité
 
-- **Stack** : HTML, CSS, JavaScript, PHP, base de données SQL (MySQL ou MariaDB).
-- **Carte et géolocalisation** : Leaflet avec OpenStreetMap et API de géolocalisation du navigateur. Les distances sont calculées en SQL. L'adresse du formulaire est convertie en coordonnées pour placer le park sur la carte.
-- **Sécurité** : mots de passe hachés (`password_hash()`), requêtes préparées (PDO), données affichées échappées, jeton CSRF sur les formulaires, rôle vérifié côté serveur.
+- **Stack** : HTML, CSS, JavaScript, PHP, base de données SQL (MySQL ou
+  MariaDB).
+- **Carte et géolocalisation** : Leaflet avec OpenStreetMap et API de
+  géolocalisation du navigateur. Les distances sont calculées en SQL. L'adresse
+  du formulaire est convertie en coordonnées pour placer le park sur la carte.
+- **Sécurité** : mots de passe hachés (`password_hash()`), requêtes préparées
+  (PDO), données affichées échappées, jeton CSRF sur les formulaires, rôle
+  vérifié côté serveur.
 - **Photos** : type et taille des fichiers contrôlés avant l'envoi.
-- **Hébergement et données** : HTTPS obligatoire, données personnelles limitées au nécessaire (LPD).
+- **Hébergement et données** : HTTPS obligatoire, données personnelles limitées
+  au nécessaire (LPD).
 
 ## 6. Exigences non fonctionnelles
 
 - **Responsive** : conçu d'abord pour mobile.
 - **Performance** : images compressées.
-- **Accessibilité et SEO** : textes alternatifs, contrastes suffisants, URL et titre propres par skatepark.
+- **Accessibilité et SEO** : textes alternatifs, contrastes suffisants, URL et
+  titre propres par skatepark.
 - **Compatibilité** : navigateurs récents, sur ordinateur et mobile.
 
+## Déploiement
+
+L'application est accessible ici : https://skatearth.ch
+
+Déploiement réalisé sur Infomaniak en suivant le guide du cours (06.02, déployer
+un site ou une application web sur Internet), avec un compte Infomaniak existant
+(sans passer par le programme étudiant).
+
+### Instructions de déploiement
+
+1. **Nom de domaine et hébergement** : acheter le nom de domaine `skatearth.ch`
+   et créer un hébergement web dans le Manager Infomaniak.
+2. **Site web** : configurer un site web associé à l'hébergement et au domaine
+   (dossier `sites/skatearth.ch`). Vérifier la version de PHP et le répertoire
+   racine du site.
+3. **Base de données** : créer une base MySQL/MariaDB dédiée
+   (`pm4slu_db_skatearth`) et un utilisateur avec les droits sur cette base.
+4. **Import du schéma** : dans phpMyAdmin, sélectionner la base, onglet
+   **Importer**, puis importer `src/db/script.sql` (sans `USE` ni
+   `CREATE DATABASE`).
+5. **Configuration** : dans `src/public/index.php`, remplacer `DB_HOST`,
+   `DB_NAME`, `DB_USER` et `DB_PASSWORD` par les valeurs de la base Infomaniak.
+   Ces identifiants ne sont pas versionnés dans Git.
+6. **Transfert des fichiers** : via le gestionnaire SFTP d'Infomaniak, supprimer
+   le `index.html` par défaut dans `skatearth.ch/` et uploader
+   `src/public/index.php`.
+7. **Vérification** : ouvrir https://skatearth.ch pour vérifier que le site est
+   accessible et que la connexion à la base fonctionne.
 
 # HEIG-VD ProgServ2 Course PHP Template
 

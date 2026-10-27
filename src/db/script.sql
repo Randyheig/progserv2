@@ -1,7 +1,7 @@
 -- MPD : site des skateparks vaudois (MariaDB)
 -- Correspond au MLD (src/db/MLDSiteSkate.png)
 
-USE my_database;
+
 
 -- Suppression des tables existantes (ordre inverse des dépendances)
 DROP TABLE IF EXISTS photo;
