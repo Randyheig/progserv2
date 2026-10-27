@@ -147,7 +147,7 @@ les boutons Accepter et Refuser.
   titre propres par skatepark.
 - **Compatibilité** : navigateurs récents, sur ordinateur et mobile.
 
-## Déploiement
+## 7. Déploiement
 
 L'application est accessible ici : https://skatearth.ch
 
