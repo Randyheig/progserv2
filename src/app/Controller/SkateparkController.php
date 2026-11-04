@@ -9,6 +9,7 @@ use App\Core\Database;
 use App\Repository\PhotoRepository;
 use App\Repository\SkateparkRepository;
 
+<<<<<<< HEAD
 class SkateparkController extends Controller
 {
     private SkateparkRepository $skateparks;
@@ -18,6 +19,19 @@ class SkateparkController extends Controller
     {
         $this->skateparks = new SkateparkRepository(Database::getConnection());
         $this->photos = new PhotoRepository(Database::getConnection());
+=======
+final class SkateparkController extends Controller
+{
+    private readonly SkateparkRepository $skateparks;
+    private readonly PhotoRepository $photos;
+
+    public function __construct(
+        ?SkateparkRepository $skateparks = null,
+        ?PhotoRepository $photos = null,
+    ) {
+        $this->skateparks = $skateparks ?? new SkateparkRepository(Database::getConnection());
+        $this->photos = $photos ?? new PhotoRepository(Database::getConnection());
+>>>>>>> origin/main
     }
 
     /** Fiche d'un skatepark validé. */
@@ -30,11 +44,19 @@ class SkateparkController extends Controller
             return;
         }
 
+<<<<<<< HEAD
         $park->setModules($this->skateparks->findModules($park->getId()));
         $park->setPhotos($this->photos->findBySkatepark($park->getId()));
 
         $this->render('skatepark', [
             'title' => $park->getNom(),
+=======
+        $park->setModules($this->skateparks->findModules($park->id));
+        $park->setPhotos($this->photos->findBySkatepark($park->id));
+
+        $this->render('skatepark', [
+            'title' => $park->nom,
+>>>>>>> origin/main
             'hero' => true,
             'withMap' => $park->hasCoordinates(),
             'park' => $park,

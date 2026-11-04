@@ -5,7 +5,11 @@
  * @var \App\Repository\SkateparkFilter $filter
  * @var \App\Entity\Module[] $allModules
  */
+<<<<<<< HEAD
 $filterActive = $filter->getTaille() !== null || $filter->getEnvironnement() !== null || $filter->getModuleIds() !== [];
+=======
+$filterActive = $filter->taille !== null || $filter->environnement !== null || $filter->moduleIds !== [];
+>>>>>>> origin/main
 ?>
 <section class="map-section">
     <h1 class="map-title">CARTE</h1>
@@ -15,7 +19,11 @@ $filterActive = $filter->getTaille() !== null || $filter->getEnvironnement() !==
 <section class="list-section list-section-map">
     <form class="searchbar searchbar-wrap" action="index.php" method="get" role="search">
         <input type="hidden" name="page" value="map">
+<<<<<<< HEAD
         <?php $searchValue = $filter->getQ() ?? ''; require APP_ROOT . '/views/partials/searchbar.php'; ?>
+=======
+        <?php $searchValue = $filter->q ?? ''; require APP_ROOT . '/views/partials/searchbar.php'; ?>
+>>>>>>> origin/main
 
         <details class="filters" <?= $filterActive ? 'open' : '' ?>>
             <summary class="filters-btn">Filtres</summary>
@@ -23,16 +31,26 @@ $filterActive = $filter->getTaille() !== null || $filter->getEnvironnement() !==
                 <label for="f-taille">Taille</label>
                 <select id="f-taille" name="taille">
                     <option value="">Toutes</option>
+<<<<<<< HEAD
                     <?php foreach (\App\Entity\Skatepark::TAILLES as $taille) { ?>
                         <option value="<?= e($taille) ?>" <?= $filter->getTaille() === $taille ? 'selected' : '' ?>><?= e($taille) ?></option>
+=======
+                    <?php foreach (\App\Enum\Taille::cases() as $taille) { ?>
+                        <option value="<?= e($taille->value) ?>" <?= $filter->taille === $taille ? 'selected' : '' ?>><?= e($taille->value) ?></option>
+>>>>>>> origin/main
                     <?php } ?>
                 </select>
 
                 <label for="f-env">Indoor / Outdoor</label>
                 <select id="f-env" name="env">
                     <option value="">Les deux</option>
+<<<<<<< HEAD
                     <?php foreach (\App\Entity\Skatepark::ENVIRONNEMENTS as $env) { ?>
                         <option value="<?= e($env) ?>" <?= $filter->getEnvironnement() === $env ? 'selected' : '' ?>><?= e(ucfirst($env)) ?></option>
+=======
+                    <?php foreach (\App\Enum\Environnement::cases() as $env) { ?>
+                        <option value="<?= e($env->value) ?>" <?= $filter->environnement === $env ? 'selected' : '' ?>><?= e($env->label()) ?></option>
+>>>>>>> origin/main
                     <?php } ?>
                 </select>
 
@@ -40,7 +58,11 @@ $filterActive = $filter->getTaille() !== null || $filter->getEnvironnement() !==
                     <legend>Modules</legend>
                     <?php foreach ($allModules as $module) { ?>
                         <label class="check">
+<<<<<<< HEAD
                             <input type="checkbox" name="modules[]" value="<?= $module->getId() ?>" <?= in_array($module->getId(), $filter->getModuleIds(), true) ? 'checked' : '' ?>>
+=======
+                            <input type="checkbox" name="modules[]" value="<?= $module->id ?>" <?= in_array($module->id, $filter->moduleIds, true) ? 'checked' : '' ?>>
+>>>>>>> origin/main
                             <?= e($module->libelle()) ?>
                         </label>
                     <?php } ?>

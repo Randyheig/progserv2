@@ -5,7 +5,11 @@ declare(strict_types=1);
 namespace App\Core;
 
 /** Associe le paramètre ?page= et la méthode HTTP à une action de contrôleur. */
+<<<<<<< HEAD
 class Router
+=======
+final class Router
+>>>>>>> origin/main
 {
     /** @var array<string, array<string, array{0: class-string, 1: string}>> */
     private array $routes = [];

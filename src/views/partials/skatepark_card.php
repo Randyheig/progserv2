@@ -4,17 +4,27 @@
  *
  * @var \App\Entity\Skatepark $park
  */
+<<<<<<< HEAD
 $fiche = url('skatepark', ['id' => $park->getId()]);
 ?>
 <a class="card" href="<?= e($fiche) ?>">
     <span class="card-photo">
         <?php if ($park->getPhotoPrincipale() !== null) { ?>
             <img src="<?= e($park->getPhotoPrincipale()) ?>" alt="Photo de <?= e($park->getNom()) ?>" loading="lazy">
+=======
+$fiche = url('skatepark', ['id' => $park->id]);
+?>
+<a class="card" href="<?= e($fiche) ?>">
+    <span class="card-photo">
+        <?php if ($park->photoPrincipale !== null) { ?>
+            <img src="<?= e($park->photoPrincipale) ?>" alt="Photo de <?= e($park->nom) ?>" loading="lazy">
+>>>>>>> origin/main
         <?php } else { ?>
             <span class="no-photo">Pas de photo</span>
         <?php } ?>
     </span>
     <span class="card-body">
+<<<<<<< HEAD
         <span class="card-title"><?= e($park->getNom()) ?></span>
         <span class="card-meta">
             <span class="badge"><?= e($park->getTaille()) ?></span>
@@ -22,6 +32,15 @@ $fiche = url('skatepark', ['id' => $park->getId()]);
         </span>
         <?php if ($park->getDistanceKm() !== null) { ?>
             <span class="card-distance">À <?= e(number_format($park->getDistanceKm(), 1, '.', '')) ?> km</span>
+=======
+        <span class="card-title"><?= e($park->nom) ?></span>
+        <span class="card-meta">
+            <span class="badge"><?= e($park->taille->value) ?></span>
+            <span class="card-address"><?= e($park->adresse) ?></span>
+        </span>
+        <?php if ($park->distanceKm !== null) { ?>
+            <span class="card-distance">À <?= e(number_format($park->distanceKm, 1, '.', '')) ?> km</span>
+>>>>>>> origin/main
         <?php } ?>
     </span>
 </a>

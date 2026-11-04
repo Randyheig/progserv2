@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+<<<<<<< HEAD
 use InvalidArgumentException;
 
 class Module
@@ -38,6 +39,19 @@ class Module
         }
 
         $this->nom = $nom;
+=======
+final class Module
+{
+    public function __construct(
+        public readonly int $id,
+        public readonly string $nom,
+    ) {
+    }
+
+    public static function fromRow(array $row): self
+    {
+        return new self((int) $row['id'], $row['nom']);
+>>>>>>> origin/main
     }
 
     /** Nom affiché (première lettre en majuscule). */

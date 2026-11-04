@@ -7,16 +7,27 @@ $siteWeb = $park->siteWebUrl();
 $instagram = $park->instagram();
 ?>
 <?php if ($photos !== []) { ?>
+<<<<<<< HEAD
     <img class="park-hero" src="<?= e($photos[0]->getChemin()) ?>" alt="Photo principale de <?= e($park->getNom()) ?>">
+=======
+    <img class="park-hero" src="<?= e($photos[0]->chemin) ?>" alt="Photo principale de <?= e($park->nom) ?>">
+>>>>>>> origin/main
 <?php } else { ?>
     <div class="park-hero park-hero-empty"></div>
 <?php } ?>
 
 <section class="park">
+<<<<<<< HEAD
     <h1 class="park-title"><?= e($park->getNom()) ?></h1>
 
     <?php if ($siteWeb !== null) { ?>
         <p class="park-link"><a href="<?= e($siteWeb) ?>" target="_blank" rel="noopener noreferrer"><?= e(str_replace(['https://', 'http://'], '', $siteWeb)) ?></a></p>
+=======
+    <h1 class="park-title"><?= e($park->nom) ?></h1>
+
+    <?php if ($siteWeb !== null) { ?>
+        <p class="park-link"><a href="<?= e($siteWeb) ?>" target="_blank" rel="noopener noreferrer"><?= e(preg_replace('#^https?://#i', '', $siteWeb)) ?></a></p>
+>>>>>>> origin/main
     <?php } ?>
     <?php if ($instagram !== null) { ?>
         <p class="park-link">
@@ -29,10 +40,17 @@ $instagram = $park->instagram();
         <div>
             <h2>Details:</h2>
             <ul>
+<<<<<<< HEAD
                 <li><?= e(ucfirst($park->getEnvironnement())) ?></li>
                 <li><?= e($park->getTaille()) ?></li>
                 <?php if ($park->getInformationsSupplementaires() !== null) { ?>
                     <li><?= nl2br(e($park->getInformationsSupplementaires())) ?></li>
+=======
+                <li><?= e($park->environnement->label()) ?></li>
+                <li><?= e($park->taille->value) ?></li>
+                <?php if ($park->informationsSupplementaires !== null) { ?>
+                    <li><?= nl2br(e($park->informationsSupplementaires)) ?></li>
+>>>>>>> origin/main
                 <?php } ?>
             </ul>
         </div>
@@ -52,20 +70,32 @@ $instagram = $park->instagram();
     <?php if (count($photos) > 1) { ?>
         <div class="gallery">
             <?php foreach (array_slice($photos, 1) as $photo) { ?>
+<<<<<<< HEAD
                 <img src="<?= e($photo->getChemin()) ?>" alt="Photo de <?= e($park->getNom()) ?>" loading="lazy">
+=======
+                <img src="<?= e($photo->chemin) ?>" alt="Photo de <?= e($park->nom) ?>" loading="lazy">
+>>>>>>> origin/main
             <?php } ?>
         </div>
     <?php } ?>
 
     <div class="park-address">
         <h2>Adresse :</h2>
+<<<<<<< HEAD
         <p><?= nl2br(e($park->getAdresse())) ?></p>
+=======
+        <p><?= nl2br(e($park->adresse)) ?></p>
+>>>>>>> origin/main
     </div>
 
     <?php if ($park->hasCoordinates()) { ?>
         <div id="park-map" class="map park-map" role="region" aria-label="Carte du skatepark"></div>
         <script>
+<<<<<<< HEAD
             var position = <?= json_encode([$park->getCoordonnees()->getLatitude(), $park->getCoordonnees()->getLongitude()]) ?>;
+=======
+            var position = <?= json_encode([$park->latitude, $park->longitude]) ?>;
+>>>>>>> origin/main
             var parkMap = L.map('park-map').setView(position, 15);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
