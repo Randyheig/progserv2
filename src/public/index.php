@@ -1,49 +1,40 @@
 <?php
-const DB_HOST = 'mariadb';
-const DB_PORT = 3306;
-const DB_NAME = 'my_database';
-const DB_USER = 'kirkistan';
-const DB_PASSWORD = 'ProgServ2';
 
-$dsn = "mysql:host=" . DB_HOST . ";port=" . DB_PORT . ";dbname=" . DB_NAME . ";charset=utf8mb4";
+declare(strict_types=1);
 
-$pdo = new PDO($dsn, DB_USER, DB_PASSWORD);
+/**
+ * Point d'entrée unique : chaque page s'appelle avec index.php?page=...
+ * Le code de l'application vit dans src/app, hors du dossier public.
+ */
 
-$sql = "SELECT * FROM my_table";
+const APP_ROOT = __DIR__ . '/..';
 
-$stmt = $pdo->prepare($sql);
+require APP_ROOT . '/app/helpers.php';
 
-$stmt->execute();
+// Chargement automatique : App\Core\Router => src/app/Core/Router.php
+spl_autoload_register(function (string $class): void {
+    $prefix = 'App\\';
+    if (!str_starts_with($class, $prefix)) {
+        return;
+    }
+    $file = APP_ROOT . '/app/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
+    if (is_file($file)) {
+        require $file;
+    }
+});
 
-$results = $stmt->fetchAll();
-?>
+use App\Controller\HomeController;
+use App\Controller\MapController;
+use App\Controller\SkateparkController;
+use App\Core\Database;
+use App\Core\Router;
 
-<!DOCTYPE html>
-<html lang="fr">
+Database::configure((require APP_ROOT . '/config/config.php')['db']);
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProgServ2 Course PHP Template</title>
-</head>
+$router = new Router();
+$router->get('home', [HomeController::class, 'index']);
+$router->get('map', [MapController::class, 'index']);
+$router->get('skatepark', [SkateparkController::class, 'show']);
 
-<body>
-    <h1>ProgServ2 Course PHP Template</h1>
-
-    <p>Bienvenue dans votre projet PHP pour le cours ProgServ2 à la HEIG-VD !</p>
-
-    <h2>Résultats de la base de données :</h2>
-
-    <ul>
-        <?php foreach ($results as $row) { ?>
-            <li>ID: <?= htmlspecialchars($row['id']) ?>
-                <ul>
-                    <li>Column1: <?= htmlspecialchars($row['column1']) ?></li>
-                    <li>Column2: <?= htmlspecialchars($row['column2']) ?></li>
-                </ul>
-            </li>
-        <?php } ?>
-    </ul>
-</body>
-
-</html>
+$page = is_string($_GET['page'] ?? null) ? $_GET['page'] : 'home';
+$router->dispatch($page, $_SERVER['REQUEST_METHOD']);

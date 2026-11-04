@@ -167,14 +167,52 @@ un site ou une application web sur Internet), avec un compte Infomaniak existant
 4. **Import du schéma** : dans phpMyAdmin, sélectionner la base, onglet
    **Importer**, puis importer `src/db/script.sql` (sans `USE` ni
    `CREATE DATABASE`).
-5. **Configuration** : dans `src/public/index.php`, remplacer `DB_HOST`,
-   `DB_NAME`, `DB_USER` et `DB_PASSWORD` par les valeurs de la base Infomaniak.
-   Ces identifiants ne sont pas versionnés dans Git.
-6. **Transfert des fichiers** : via le gestionnaire SFTP d'Infomaniak, supprimer
-   le `index.html` par défaut dans `skatearth.ch/` et uploader
-   `src/public/index.php`.
+5. **Configuration** : copier `src/config/config.example.php` en
+   `src/config/config.php` et y mettre l'hôte, le nom de la base, l'utilisateur
+   et le mot de passe de la base Infomaniak. Ce fichier n'est pas versionné
+   (`.gitignore`) et ne doit jamais être poussé sur GitHub.
+6. **Transfert des fichiers** : via le gestionnaire SFTP d'Infomaniak, envoyer
+   tout le contenu du dossier `src/` dans `sites/skatearth.ch/` (sans
+   `src/db/`), puis régler le répertoire racine du site sur
+   `skatearth.ch/public`. Supprimer le `index.html` par défaut.
 7. **Vérification** : ouvrir https://skatearth.ch pour vérifier que le site est
    accessible et que la connexion à la base fonctionne.
+
+## Architecture de l'application (POO)
+
+Version actuelle : pages publiques uniquement (accueil, map avec filtres, fiche
+d'un skatepark). Comptes, profil, likes, ajout de skatepark et section admin
+viendront dans une étape suivante.
+
+Le dossier `src/public/` est le seul accessible depuis le web, tout le code vit
+dans `src/app/`.
+
+```text
+src/
+  public/        index.php (point d'entrée unique), css/, img/, uploads/
+  app/
+    Core/        Database, Router, View, Controller (classe de base)
+    Entity/      Skatepark, Module, Photo
+    Enum/        EtatValidation, Taille, Environnement
+    Repository/  une classe par entité, toutes les requêtes SQL (PDO préparé)
+    Controller/  Home, Map, Skatepark
+  views/         templates PHP et partials
+  config/        config.example.php (versionné), config.php (non versionné)
+  db/            MCD, MLD, script.sql et donnees_test.sql
+```
+
+Les pages s'appellent avec `index.php?page=...` (`home`, `map`, `skatepark&id=1`).
+En local, le site est accessible sur <http://localhost:8080/src/public/index.php>
+après avoir importé `src/db/script.sql` puis `src/db/donnees_test.sql` dans la
+base `my_database` (phpMyAdmin, <http://localhost:9090>).
+
+Images de la maquette : `src/public/img/logo.png` (logo du header et du footer)
+et `src/public/img/accueil.jpg` (grande image de l'accueil). Si ces fichiers
+sont absents, le site affiche le nom en texte et un dégradé bleu.
+
+Seuls les skateparks à l'état `validee` sont affichés. Sans comptes, on ajoute
+les skateparks directement dans phpMyAdmin (table `skatepark`, avec
+`etat_validation = 'validee'`).
 
 # HEIG-VD ProgServ2 Course PHP Template
 

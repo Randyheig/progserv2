@@ -1,0 +1,627 @@
+/*
+ * Skatearth : feuille de style, calquée sur la maquette Figma (écrans mobile, 440 px).
+ * Mobile d'abord. Sur grand écran, la page reste une colonne centrée de 480 px max.
+ */
+
+:root {
+    --bg: #fafbf4;
+    --page-bg: #e9e8df;
+    --header: rgba(33, 51, 102, 0.5);
+    --header-solid: #213366;
+    --bars: #cac2a4;
+    --blue: #bfd3e3;
+    --peach: rgba(242, 182, 109, 0.8);
+    --badge: #f2b66d;
+    --text: #312e2f;
+    --muted: #6b7491;
+    --heart: #9b1c1c;
+    --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-small: 'Google Sans Flex', 'Inter', system-ui, sans-serif;
+    --gutter: clamp(16px, 9.3vw, 41px);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--page-bg);
+    color: #000;
+    font-family: var(--font);
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Colonne principale */
+.app {
+    position: relative;
+    max-width: 480px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
+}
+
+main {
+    flex: 1;
+    padding-top: 115px;
+}
+
+.has-hero main {
+    padding-top: 0;
+}
+
+/* Header : bandeau bleu translucide posé sur l'image (ou sur le fond de la page) */
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 115px;
+    z-index: 20;
+    background: var(--header);
+    display: grid;
+    grid-template-columns: 1fr minmax(0, min(132px, 30%)) 1fr;
+    align-items: center;
+    padding: 0 6.1% 0 8.2%;
+}
+
+.menu {
+    justify-self: start;
+}
+
+.menu summary {
+    list-style: none;
+    cursor: pointer;
+    width: 45px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.menu summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu summary span {
+    display: block;
+    height: 9px;
+    background: var(--bars);
+}
+
+.menu nav {
+    position: absolute;
+    top: 115px;
+    left: 0;
+    width: min(300px, 70vw);
+    background: var(--header-solid);
+    display: flex;
+    flex-direction: column;
+    padding: 8px 24px 16px;
+}
+
+.menu nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu nav a:last-child {
+    border-bottom: 0;
+}
+
+.logo {
+    justify-self: center;
+    display: block;
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}
+
+.logo-text {
+    display: block;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    font-size: 15px;
+}
+
+.login-circle {
+    justify-self: end;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: var(--bars);
+}
+
+/* Accueil : grande image en haut */
+.home-hero {
+    height: min(956px, 217vw);
+    background: linear-gradient(180deg, #213366 0%, #3d5b9a 55%, #7aa3d6 100%) center / cover no-repeat;
+}
+
+/* Sections avec liste */
+.list-section {
+    padding: 38px var(--gutter) 46px;
+}
+
+.list-section-map {
+    border-top: 1px solid #000;
+    margin-top: 20px;
+    padding-top: 36px;
+}
+
+/* Barre de recherche */
+.searchbar {
+    display: flex;
+    gap: 5px;
+    align-items: stretch;
+    margin-bottom: 46px;
+}
+
+.search-field {
+    flex: 1;
+    min-width: 0;
+    height: 51px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px 0 14px;
+}
+
+.search-field svg {
+    width: 24px;
+    height: 24px;
+    flex: none;
+    fill: none;
+    stroke: #3a3f55;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+}
+
+.search-field input {
+    flex: 1;
+    min-width: 0;
+    height: 26px;
+    border: 0;
+    border-bottom: 1.5px solid #3a5a8c;
+    background: transparent;
+    font: inherit;
+    font-size: 15px;
+    padding: 0 2px;
+    outline: none;
+}
+
+.search-field input:focus-visible {
+    border-bottom-color: #000;
+    border-bottom-width: 2px;
+}
+
+.filters-btn {
+    flex: none;
+    width: 64px;
+    height: 51px;
+    background: var(--blue);
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    list-style: none;
+}
+
+.filters-btn::-webkit-details-marker {
+    display: none;
+}
+
+/* Recherche de la page map : le panneau de filtres passe sous la barre */
+.searchbar-wrap {
+    flex-wrap: wrap;
+}
+
+.searchbar-wrap .filters {
+    display: contents;
+}
+
+.filters-panel {
+    flex: 0 0 100%;
+    order: 3;
+    margin-top: 10px;
+    background: var(--blue);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filters-panel label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.filters-panel select {
+    font: inherit;
+    padding: 8px;
+    border: 1px solid #000;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.filters-panel fieldset {
+    border: 0;
+    margin: 6px 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.filters-panel legend {
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0;
+    margin-bottom: 6px;
+}
+
+.check {
+    font-weight: 400 !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    text-align: center;
+    background: var(--header-solid);
+    color: #fff;
+    border: 1px solid var(--header-solid);
+    border-radius: 10px;
+    padding: 10px 18px;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-light {
+    background: #fff;
+    color: var(--header-solid);
+}
+
+/* Cartes de skatepark : 360 x 100, bordure noire, coins arrondis */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card {
+    display: flex;
+    gap: 14px;
+    align-items: stretch;
+    min-height: 100px;
+    padding: 12px 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--bg);
+}
+
+.card:focus-visible {
+    outline: 3px solid var(--header-solid);
+    outline-offset: 2px;
+}
+
+.card-photo {
+    flex: none;
+    width: 38%;
+    max-width: 148px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #d8d6c8;
+    display: block;
+}
+
+.card-photo img {
+    width: 100%;
+    height: 100%;
+    min-height: 76px;
+    object-fit: cover;
+}
+
+.no-photo {
+    height: 100%;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+}
+
+.card-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 1.2;
+    color: var(--text);
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--badge);
+    color: var(--text);
+    font-weight: 700;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-address {
+    font-family: var(--font-small);
+    font-size: 10.5px;
+    color: var(--muted);
+}
+
+.card-distance {
+    font-family: var(--font-small);
+    font-size: 10.5px;
+    color: var(--muted);
+}
+
+.empty {
+    text-align: center;
+    color: var(--muted);
+}
+
+/* Page map */
+.map-section {
+    padding: 18px 16% 0;
+}
+
+.map-title {
+    margin: 0 0 6px;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #000;
+}
+
+.map {
+    width: 100%;
+    height: min(560px, 125vw);
+    z-index: 1;
+}
+
+/* Fiche d'un skatepark */
+.park-hero {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+.park-hero-empty {
+    background: linear-gradient(180deg, #213366 0%, #3d5b9a 60%, #7aa3d6 100%);
+}
+
+.park {
+    padding: 18px clamp(16px, 11.4vw, 50px) 56px;
+}
+
+.park-title {
+    margin: 0 0 12px;
+    font-size: 36px;
+    line-height: 1.1;
+    font-weight: 900;
+    color: #000;
+    overflow-wrap: anywhere;
+}
+
+.park-link {
+    margin: 0 0 6px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow-wrap: anywhere;
+}
+
+.park-link a {
+    text-decoration: none;
+}
+
+.icon-insta {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    fill: none;
+    stroke: #000;
+    stroke-width: 2;
+}
+
+.icon-insta circle:last-child {
+    fill: #000;
+}
+
+.park-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 30px 0 36px;
+    padding: 0 6px;
+}
+
+.park-info h2,
+.park-address h2 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.park-info ul {
+    margin: 0;
+    padding-left: 22px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 5%;
+    margin-bottom: 56px;
+}
+
+.gallery img {
+    width: 100%;
+    aspect-ratio: 148 / 132;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.park-address {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.park-address h2 {
+    margin: 0;
+}
+
+.park-address p {
+    margin: 0;
+    max-width: 52%;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.park-map {
+    height: 239px;
+}
+
+/* Pied de page */
+.site-footer {
+    background: var(--peach);
+    min-height: 114px;
+    padding: 16px 20px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--font-small);
+    color: #000;
+}
+
+.footer-text p {
+    margin: 0;
+}
+
+.lang {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.lang-active {
+    text-decoration: underline;
+}
+
+.lang-sep {
+    width: 1px;
+    height: 17px;
+    background: #000;
+}
+
+.legal {
+    font-size: 8px;
+    line-height: 1.5;
+    margin-bottom: 8px !important;
+    max-width: 200px;
+}
+
+.legal span {
+    text-decoration: underline;
+}
+
+.footer-logo {
+    width: 97px;
+    flex: none;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: auto;
+}
+
+.footer-logo .logo-text {
+    color: #000;
+    font-size: 12px;
+    text-align: right;
+}
