@@ -192,8 +192,12 @@ src/
   public/        index.php (point d'entrée unique), css/, img/, uploads/
   app/
     Core/        Database, Router, View, Controller (classe de base)
+<<<<<<< HEAD
+    Entity/      Skatepark, Coordonnees, Module, Photo
+=======
     Entity/      Skatepark, Module, Photo
     Enum/        EtatValidation, Taille, Environnement
+>>>>>>> origin/main
     Repository/  une classe par entité, toutes les requêtes SQL (PDO préparé)
     Controller/  Home, Map, Skatepark
   views/         templates PHP et partials

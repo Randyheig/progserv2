@@ -42,8 +42,8 @@ services:
     image: mariadb:12
     environment:
       - MARIADB_RANDOM_ROOT_PASSWORD=yes
-      - MARIADB_USER=username
-      - MARIADB_PASSWORD=password
+      - MARIADB_USER=kirkistan
+      - MARIADB_PASSWORD=ProgServ2
       - MARIADB_DATABASE=my_database
     ports:
       - 3306:3306

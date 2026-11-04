@@ -7,7 +7,11 @@ namespace App\Core;
 use PDO;
 
 /** Fournit une seule connexion PDO partagée par toute l'application. */
+<<<<<<< HEAD
+class Database
+=======
 final class Database
+>>>>>>> origin/main
 {
     private static ?PDO $pdo = null;
 

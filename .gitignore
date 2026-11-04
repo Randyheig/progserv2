@@ -12,3 +12,13 @@ Thumbs.db
 
 # Folder config file
 [Dd]esktop.ini
+
+## Projet Skatearth
+# Identifiants de la base de données
+src/config/config.php
+# Photos envoyées par les utilisateurs
+src/public/uploads/*
+!src/public/uploads/.gitkeep
+
+# Fichiers retirés de la version simple (comptes, likes, ajout, admin)
+/_a_supprimer/
