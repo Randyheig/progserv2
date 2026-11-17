@@ -6,15 +6,11 @@ namespace App\Controller;
 
 use App\Core\Controller;
 use App\Core\Database;
-<<<<<<< HEAD
 use App\Entity\Skatepark;
-=======
->>>>>>> origin/main
 use App\Repository\ModuleRepository;
 use App\Repository\SkateparkFilter;
 use App\Repository\SkateparkRepository;
 
-<<<<<<< HEAD
 class MapController extends Controller
 {
     private SkateparkRepository $skateparks;
@@ -24,48 +20,23 @@ class MapController extends Controller
     {
         $this->skateparks = new SkateparkRepository(Database::getConnection());
         $this->modules = new ModuleRepository(Database::getConnection());
-=======
-final class MapController extends Controller
-{
-    private readonly SkateparkRepository $skateparks;
-    private readonly ModuleRepository $modules;
-
-    public function __construct(
-        ?SkateparkRepository $skateparks = null,
-        ?ModuleRepository $modules = null,
-    ) {
-        $this->skateparks = $skateparks ?? new SkateparkRepository(Database::getConnection());
-        $this->modules = $modules ?? new ModuleRepository(Database::getConnection());
->>>>>>> origin/main
     }
 
     /** Carte interactive et liste, avec recherche et filtres. */
     public function index(): void
     {
-<<<<<<< HEAD
         $filter = $this->creerFiltre();
-=======
-        $filter = SkateparkFilter::fromQuery($_GET);
->>>>>>> origin/main
         $parks = $this->skateparks->search($filter);
 
         $markers = [];
         foreach ($parks as $park) {
             if ($park->hasCoordinates()) {
-<<<<<<< HEAD
                 $coordonnees = $park->getCoordonnees();
                 $markers[] = [
                     'nom' => $park->getNom(),
                     'lat' => $coordonnees->getLatitude(),
                     'lng' => $coordonnees->getLongitude(),
                     'url' => url('skatepark', ['id' => $park->getId()]),
-=======
-                $markers[] = [
-                    'nom' => $park->nom,
-                    'lat' => $park->latitude,
-                    'lng' => $park->longitude,
-                    'url' => url('skatepark', ['id' => $park->id]),
->>>>>>> origin/main
                 ];
             }
         }
@@ -79,7 +50,6 @@ final class MapController extends Controller
             'allModules' => $this->modules->findAll(),
         ]);
     }
-<<<<<<< HEAD
 
     /** Construit le filtre à partir de l'URL (?q=...&taille=...&env=...&modules[]=...) en ignorant les valeurs invalides. */
     private function creerFiltre(): SkateparkFilter
@@ -111,6 +81,4 @@ final class MapController extends Controller
 
         return $filter;
     }
-=======
->>>>>>> origin/main
 }
